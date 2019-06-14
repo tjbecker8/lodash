@@ -63,11 +63,11 @@ let products =[
 		code: 342
 	}
 ]
-
+//ordering y price in descending order
 let order_price = _.orderBy(products, 'price' ['desc'])
-
+//finding products by unique code
 let uniq_code = _.uniq(products, 'code')
-
+//adding 10% tax to the price of the unique coded items
 let add_tax = _.map(uniq_code, (f) => {
 	return {
 		name: f.name,
@@ -76,8 +76,7 @@ let add_tax = _.map(uniq_code, (f) => {
 	}
 })
 // console.log('addtax', add_tax)
-// let sum_prod = _.sum(add_tax)
 
+//now getting sum of prices once tax has been added
 let sumBy = _.sumBy(add_tax, function(o) { return o.price; })
 console.log('sumBy', sumBy)
-// console.log('sum_prod', sum_prod)

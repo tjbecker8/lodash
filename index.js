@@ -48,6 +48,11 @@ let products =[
 		code: 123
 	},
 	{
+		name: 'toy',
+		price: 2,
+		code: 123
+	},
+	{
 		name: 'car',
 		price: 50,
 		code: 456
@@ -66,7 +71,13 @@ let products =[
 //ordering y price in descending order
 let order_price = _.orderBy(products, 'price' ['desc'])
 //finding products by unique code
-let uniq_code = _.uniq(products, 'code')
+let uniq_code = _.uniqBy(order_price,(e) => {
+  return e.price
+});
+// let uniq_code = _.uniq(products, 'code')
+console.log('print', uniq_code)
+
+
 //adding 10% tax to the price of the unique coded items
 let add_tax = _.map(uniq_code, (f) => {
 	return {
